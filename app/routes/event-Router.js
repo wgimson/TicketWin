@@ -1,5 +1,7 @@
-var express = require('express')
-    Event   = require('../../app/models/event'); 
+var express       = require('express'),
+    dateFunctions = require('../utils/date_functions.js'),
+    mongoose      = require('mongoose')
+    Event         = require('../../app/models/event'); 
 
 var router = express.Router();
 
@@ -12,10 +14,21 @@ router.route('/')
     .post(function(req, res) {
         var event = new Event();
 
-        event.name = req.body.name;
-        event.owner = req.body.owner;
-        event.startDate = req.body.startDate;
-        event.endDate = req.body.endDate;
+        event.title              = req.body.title;
+        event.description        = req.body.description;
+        event.start_date         = req.body.start_date;
+        event.end_date           = req.body.start_date;
+        event.user_id            = mongoose.Types.ObjectId();
+        event.created_at         = dateFunctions.getDate();
+        event.updated_at         = null;
+        event.status             = req.body.status;
+        event.image_file_name    = req.body.image_file_name;
+        event.image_content_type = req.body.image_content_type;
+        event.image_file_size    = req.body.image_file_size;
+        event.image_updated_at   = dateFunctions.getDate();
+        event.location           = req.body.location;
+        event.organization_id    = req.body.organization_id;
+        event.is_featured        = req.body.is_featured;
 
         event.save(function(err) {
             if (err) {
@@ -30,7 +43,7 @@ router.route('/')
                 res.send(err);
             }
             res.json(events);
-        })
+        });
     });
 
 router.route('/:event_id')
@@ -57,6 +70,23 @@ router.route('/:event_id')
                 res.json(updatedEvent)
             });
         });
+    })
+    .delete(function(req, res) {
+        Event.remove({ _id: req.params.event_id }, function(err, event) {
+            if (err)
+                res.send(err)
+            res.json(event);
+        })
     });
+
+router.route('/featured')
+    .get(function(req, res) {
+        Event.find({ 'is_featured': 'true'}, function(err, events) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(events);
+        })
+    })
 
 module.exports = router;

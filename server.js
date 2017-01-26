@@ -17,6 +17,6 @@ var port = process.env.PORT || 1337;
 app.use('/api/events', eventRouter);
 
 // START THE SERVER
-// =============================================================================
+// ===================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
