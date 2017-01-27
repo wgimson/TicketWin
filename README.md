@@ -19,3 +19,7 @@ Otherwise run...
 ...in the root directory of the app. The application should now be running. You can now submit queries against the API using postman, fiddler, etc. 
 
 There is a json file called <code>seeds.json</code> in the <code>/app/data</code> directory which you can insert into your Mongo instance after creating an Events Collection in the ticketWin_DB (the database process will be improved and automated going forward, hopefully...)
+
+For testing run...
+
+<code>gulp test</code>
