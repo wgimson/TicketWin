@@ -1,11 +1,15 @@
 var express    = require('express'),   
     mongoose   = require('mongoose'),
-    eventRouter = require('./app/routes/event-Router'),   
+    eventRouter = require('./app/routes/event-Router'),  
+    dbUtil      = require('./app/data/db.js'),
     bodyParser = require('body-parser');
 
 
 var app = express();  
-mongoose.connect('mongodb://localhost:27017/ticketWin_DB');             
+
+// CONNECT TO DB AND REGISTER DATA EVENT -------------
+// ===================================================
+dbUtil.dbConnect();             
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,3 +24,5 @@ app.use('/api/events', eventRouter);
 // ===================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
+
+module.exports = app;

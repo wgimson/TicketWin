@@ -17,15 +17,18 @@ var EventSchema   = new Schema({
     updated_at:         Date,
     status: {            
         type: String,
-        enum: ['featured', 'not featured']
+        enum: ['pending', 'confirmed', 'in progress', 'over']
     },
     image_file_name:    String,
-    image_content_type: String,
+    image_content_type: {
+        type: String,
+        enum: ['jpg', 'gif', 'bmp', 'png']
+    },
     image_file_size:    Number,
     image_updated_at:   Date,
     location:           String,
     organization_id:    Number,
     is_featured:        Boolean
-});
+}, { collection: 'Events' });
 
 module.exports = mongoose.model('Event', EventSchema);

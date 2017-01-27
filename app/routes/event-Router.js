@@ -12,6 +12,7 @@ router.use(function(req, res, next) {
 
 router.route('/')
     .post(function(req, res) {
+         console.log('A POST route is being called');
         var event = new Event();
 
         event.title              = req.body.title;
@@ -38,6 +39,7 @@ router.route('/')
         });
     })
     .get(function(req, res) {
+         console.log('A GET route is being called');
         Event.find(function(err, events) {
             if (err) {
                 res.send(err);
@@ -48,6 +50,7 @@ router.route('/')
 
 router.route('/:event_id')
     .get(function(req, res) {
+         console.log('A GET route is being called');
         Event.findById(req.params.event_id, function(err, event) {
             if (err) 
                 res.send(err);
@@ -55,6 +58,7 @@ router.route('/:event_id')
         })
     })
     .put(function(req, res) {
+         console.log('A PUT route is being called');
         Event.findById(req.params.event_id, function(err, updatedEvent) {
             if (err) 
                 res.send(err)
@@ -72,6 +76,7 @@ router.route('/:event_id')
         });
     })
     .delete(function(req, res) {
+         console.log('A DELETE route is being called');
         Event.remove({ _id: req.params.event_id }, function(err, event) {
             if (err)
                 res.send(err)
@@ -81,6 +86,7 @@ router.route('/:event_id')
 
 router.route('/featured')
     .get(function(req, res) {
+         console.log('A GET route is being called');
         Event.find({ 'is_featured': 'true'}, function(err, events) {
             if (err) {
                 res.send(err);
