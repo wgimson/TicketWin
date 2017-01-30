@@ -8,17 +8,17 @@ Then clone the app and run...
 
 <code>npm install</code>
 
-If you have nodemon installed you can now run...
+To run the application type...
 
-<code>npm start</code>
+<code>gulp serve-dev</code>
 
-Otherwise run...
-
-<code>node server</code>
-
-...in the root directory of the app. The application should now be running. You can now submit queries against the API using postman, fiddler, etc. 
+The application should now be running. You can now submit queries against the API using postman, fiddler, etc. 
 
 There is a json file called <code>seeds.json</code> in the <code>/app/data</code> directory which you can insert into your Mongo instance after creating an Events Collection in the ticketWin_DB (the database process will be improved and automated going forward, hopefully...)
+
+To run error and style checking against the code run...
+
+<code>gulp vet</code>
 
 For testing run...
 
