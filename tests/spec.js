@@ -1,14 +1,5 @@
-/*var assert = require('assert');
-  describe('Array', function() {
-    describe('#indexOf()', function() {
-      it('should return -1 when the value is not present', function() {
-        assert.equal(-1, [1,2,3].indexOf(4));
-      });
-  });
-});*/
-
 //During the test the env variable is set to test
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV='test';
 
 let mongoose = require('mongoose'),
     Event = require('../app/models/event');

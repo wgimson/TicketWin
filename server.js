@@ -14,8 +14,8 @@ dbUtil.dbConnect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 1337;
-
+var port = process.env.PORT,
+    env  = process.env.NODE_ENV;
 // REGISTER OUR ROUTES -------------------------------
 // ===================================================
 app.use('/api/events', eventRouter);
@@ -23,6 +23,6 @@ app.use('/api/events', eventRouter);
 // START THE SERVER
 // ===================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('About to crank up Node Server on port: ' + port + ' in environment: ' + env);
 
 module.exports = app;

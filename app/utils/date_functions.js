@@ -7,12 +7,12 @@ exports.getDate = function() {
     var yyyy = today.getFullYear();
 
     if (dd < 10) {
-        dd='0' + dd
+        dd='0' + dd;
     } 
 
     if (mm < 10) {
-        mm = '0' + mm
+        mm = '0' + mm;
     } 
 
     return (mm + '/' + dd + '/' + yyyy);
-}
+};
