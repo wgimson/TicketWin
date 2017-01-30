@@ -4,10 +4,6 @@ var express    = require('express'),
     dbUtil      = require('./app/data/db.js'),
     bodyParser = require('body-parser');
 
-    // test for vs code
-    
-
-
 var app = express();  
 
 // CONNECT TO DB AND REGISTER DATA EVENT -------------
